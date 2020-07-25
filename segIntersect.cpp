@@ -26,8 +26,8 @@ int main()
     lineSeg l1; 
     lineSeg l2; 
     
-    l1.setPoints(4,6,7,8);
-    l2.setPoints(5,7,8,9);
+    l1.setPoints(-1,0,3,0);
+    l2.setPoints(0,4,0,6);
     
     std::cout << "Details of Line Segment 1 : \n"
               << "End Point 1 : (" << l1.p1.x << ',' << l1.p1.y << ") "
@@ -35,9 +35,16 @@ int main()
     
     std::cout << "Details of Line Segment 2 : \n"
               << "End Point 1 : (" << l2.p1.x << ',' << l2.p1.y << ") "
-              << "End Point 2 : (" << l2.p2.x << ',' << l2.p2.y << ")"; 
+              << "End Point 2 : (" << l2.p2.x << ',' << l2.p2.y << ")\n\n"; 
+              
+    std::cout << isSegIntersect(l1,l2); 
 }
 
 bool isSegIntersect(lineSeg &l1, lineSeg&l2) 
 {
+    if (l1.p2.y - l1.p1.y / l1.p2.x - l1.p1.x == 
+        l2.p2.y - l2.p1.y / l2.p2.x - l2.p1.x) 
+        return false;
+    
+    return true;
 }
